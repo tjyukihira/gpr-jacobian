@@ -9,14 +9,14 @@ In ./SyntheticData, data and scripts for the analyses of synsthetic data are loc
 Running "sim_fw5.jl" and "sim_prey_switching.jl" creates synthetic time series for food web model 1 and 2 respectively.
 Running "sim_logistic_10.jl" creates synthetic time series for logistic map.
 
-To prepare theoretical Jacobian matrix and data with observational noise for each theoretical model, run "generate_data_*.jl" files  ("*"= "fw5", "switching", "logistic").
-To prepare theoretical discretised Jacobian matrix for continuous time models, run "generate_jmat_discretised_*.jl"  ("*"= "fw5", "switching").
+To prepare theoretical Jacobian matrix and data with observational noise for each theoretical model, run "generate_data_*modelname*.jl" files  ("*modelname*"= "fw5", "switching", "logistic").
+To prepare theoretical discretised Jacobian matrix for continuous time models, run "generate_jmat_discretised_*modelname*.jl"  ("*modelname*"= "fw5", "switching").
 
-To fit GPR and S-map models, run "fit_GPR_*.R" and "fit_smap_*.R" files.
+To fit GPR and S-map models, run "fit_GPR_*modelname*.R" and "fit_smap_*modelname*.R" files.
 
-To create figures used to compare the performances in the article, run "*_inference_comparison.R" files.
+To create figures used to compare the performances in the article, run "*modelname*_inference_comparison.R" files.
 
-To create figures used to test the performance of GPR for scenario exploration, run "sim_jmat_*.jl" files.
+To create figures used to test the performance of GPR for scenario exploration, run "sim_jmat_*modelname*.jl" files.
 
 ### Empirical data
 In ./Beninca2009, data and scripts for the analyses of experimental mesocosm data are located.
