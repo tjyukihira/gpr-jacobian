@@ -32,9 +32,9 @@ for (i in 1:nmodel) {
   }
 }
 
-inference_jmat_smap <- get_stats_ver2(jmat_smap, list_jmat_scaled_fw5)
-inference_jmat_rsmap <- get_stats_ver2(jmat_rsmap, list_jmat_scaled_fw5)
-inference_jmat_gpr <- get_stats_ver2(jmat_gpr, list_jmat_scaled_fw5)
+inference_jmat_smap <- get_stats(jmat_smap, list_jmat_scaled_fw5)
+inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_fw5)
+inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_fw5)
 
 # save boxplot
 plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
@@ -68,9 +68,9 @@ for (i in 1:nmodel) {
 }
 
 # calculate performance criteria
-inference_jmat_smap <- get_stats_ver2(jmat_smap, list_jmat_scaled_fw5)
-inference_jmat_rsmap <- get_stats_ver2(jmat_rsmap, list_jmat_scaled_fw5)
-inference_jmat_gpr <- get_stats_ver2(jmat_gpr, list_jmat_scaled_fw5)
+inference_jmat_smap <- get_stats(jmat_smap, list_jmat_scaled_fw5)
+inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_fw5)
+inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_fw5)
 
 # plot and save violin plots for RMSE and rho
 plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
@@ -104,9 +104,9 @@ for (i in 1:nmodel) {
 }
 
 # calculate performance criteria
-inference_jmat_smap <- get_stats_ver2(jmat_smap, list_jmat_scaled_fw5)
-inference_jmat_rsmap <- get_stats_ver2(jmat_rsmap, list_jmat_scaled_fw5)
-inference_jmat_gpr <- get_stats_ver2(jmat_gpr, list_jmat_scaled_fw5)
+inference_jmat_smap <- get_stats(jmat_smap, list_jmat_scaled_fw5)
+inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_fw5)
+inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_fw5)
 
 # plot and save violin plots for RMSE and rho
 plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
@@ -140,9 +140,9 @@ for (i in 1:nmodel) {
 }
 
 # calculate performance criteria
-inference_jmat_smap <- get_stats_ver2(jmat_smap, list_jmat_scaled_fw5)
-inference_jmat_rsmap <- get_stats_ver2(jmat_rsmap, list_jmat_scaled_fw5)
-inference_jmat_gpr <- get_stats_ver2(jmat_gpr, list_jmat_scaled_fw5)
+inference_jmat_smap <- get_stats(jmat_smap, list_jmat_scaled_fw5)
+inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_fw5)
+inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_fw5)
 
 # plot and save violin plots for RMSE and rho
 plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,

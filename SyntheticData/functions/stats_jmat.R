@@ -47,36 +47,7 @@ get_jmat_rsmap <- function(modeloption, noisecond){
 }
 
 # function to calculate summary statistics of the inference
-get_stats <- function(list_jmat_smap, list_jmat_scaled, datasize=100){
-  nmodel <- length(list_jmat_scaled)
-  nsp <- ncol(list_jmat_scaled[[1]][,,1])
-  
-  vec_rmse <- vec_rho <- c()
-  list_mat_rho <- list_mat_rmse <- list()
-  
-  for (model in 1:nmodel) {
-    vec_rho_temp <- vec_rmse_temp <- c()
-    list_mat_rho[[model]] <- list_mat_rmse[[model]] <- matrix(NA, nrow = nsp, ncol = nsp)
-    for(i_row in 1:nsp){
-      for (i_col in 1:nsp) {
-        rho_temp <- suppressWarnings(cor(list_jmat_smap[[model]][i_row,i_col,1:(datasize-1)], list_jmat_scaled[[model]][i_row,i_col,1:(datasize-1)]))
-        rmse_temp <- (list_jmat_smap[[model]][i_row,i_col,1:(datasize-1)] - list_jmat_scaled[[model]][i_row,i_col,1:(datasize-1)])^2 %>% mean %>% sqrt
-        
-        vec_rho_temp <- c(vec_rho_temp, rho_temp)
-        vec_rmse_temp <- c(vec_rmse_temp, rmse_temp)
-        list_mat_rho[[model]][i_row, i_col] <- rho_temp
-        list_mat_rmse[[model]][i_row, i_col] <- rmse_temp
-      }
-    }
-    
-    vec_rmse[model] <- mean(vec_rmse_temp)
-    vec_rho[model] <- mean(vec_rho_temp, na.rm = TRUE)
-  }
-  res_inference <- list(vec_rmse=vec_rmse, vec_rho=vec_rho, list_mat_rmse=list_mat_rmse, list_mat_rho=list_mat_rho)
-  return(res_inference)
-}
-
-get_stats_ver2 <- function(list_jmat_est, list_jmat_true, datasize=100){
+get_stats <- function(list_jmat_est, list_jmat_true, datasize=100){
   nmodel <- length(list_jmat_true)
   nsp <- ncol(list_jmat_true[[1]][,,1])
   
@@ -88,27 +59,6 @@ get_stats_ver2 <- function(list_jmat_est, list_jmat_true, datasize=100){
   }
   res_inference <- list(vec_rmse=vec_rmse, vec_rho=vec_rho)
   return(res_inference)
-}
-
-# function for scatter plot of interaction strengths
-scatter_jmat <- function(inference_jmat, list_jmat, model=1, ylim=c(-2,2), title=""){
-  datasize <- dim(list_jmat[[1]])[3]
-  npop <- ncol(list_jmat[[1]][,,1])
-  vec_coeffs_true <- c()
-  for(t in 1:(datasize-1)){
-    vec_coeffs_true[(1+(t-1)*npop^2):(t*npop^2)] <- c(list_jmat[[model]][,,t])
-  }
-  df_sct <- data.frame(Estimated = inference_jmat$mat_coeffs[, model], Theoretical = vec_coeffs_true)
-  ggplot(data = df_sct, aes(x = Theoretical, y = Estimated)) +
-    geom_point(colour = "darkgreen", alpha = 0.3) +
-    geom_abline(slope = 1, intercept = 0, lty = "dashed") +
-    geom_abline(slope = inference_jmat$vec_bhat[model], intercept = 0) +
-    annotate("text", x=min(vec_coeffs_true)+0.28, y=ylim[2], label=paste("RMSE =", round(inference_jmat$vec_rmse[model], digits = 2))) +
-    annotate("text", x=min(vec_coeffs_true)+0.2, y=ylim[2]-0.25, label=paste("beta ==", round(inference_jmat$vec_bhat[model], digits = 2)), parse = T) +
-    annotate("text", x=min(vec_coeffs_true)+0.2, y=ylim[2]-0.5, label=paste("rho ==", round(inference_jmat$vec_rho[model], digits = 2)), parse = T) +
-    ylim(ylim) +
-    labs(title = title) +
-    theme_light()
 }
 
 # function for boxplot of summary statistics of the inference
