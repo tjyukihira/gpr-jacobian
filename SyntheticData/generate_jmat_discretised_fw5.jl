@@ -1,4 +1,6 @@
 ### Scripts for making discretised theoretical Jacobian of continuous time models
+using LinearAlgebra
+
 include("functions/get_jmat_discrete.jl")
 include("load_data_fw5.jl")
 
