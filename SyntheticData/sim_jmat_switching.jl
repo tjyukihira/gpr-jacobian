@@ -84,10 +84,10 @@ box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="ρ (median: $(round(me
 
 plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5i_sim_jmat_switching_noise.png")
+savefig("fig/figureS3/figS3i_sim_jmat_switching_noise.png")
 
 plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
-savefig("fig/sim_jmat/S5j_diff_jmat_switching_noise.png")
+savefig("fig/figureS3/figS3j_diff_jmat_switching_noise.png")
 
 # ------------------------------------------------------------------------------------------------
 # High level of process noise
@@ -131,7 +131,7 @@ i_med_diff = argmin(abs.(vec_cor_diff .- median(vec_cor_diff)))
 
 plt_diff = plot(vec_diff_mean_strength_gpr[i_med], linewidth=4, xlabel="Time", ylabel="Change of mean strength", label="GPR", legendfontsize=18, legend=:topleft)
 plt_diff = plot!(plt_diff, vec_diff_mean_strength_true[i_med], linewidth=4, label="Ground truth")
-plt_diff = annotate!(plt_diff, [75], [0.02], text("Accuracy: $(round(vec_sign_diff_mean[i_med]*100, digits=1))%", 20))
+plt_diff = annotate!(plt_diff, [50], [0.02], text("Accuracy: $(round(vec_sign_diff_mean[i_med]*100, digits=1))%", 20))
 plt_diff = hline!(plt_diff, [0], linestyle=:dash, colour=:black, linewidth=3, label=false)
 
 sct_diff = scatter_diff(vec_diff_gpr, vec_diff_true; model=i_med_diff, nsp=5, datasize=100)
@@ -141,12 +141,20 @@ box_sign_diff_mean = annotate!(box_sign_diff_mean, [1], [95], text("$(sum(vec_si
 
 box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="ρ (median: $(round(median(vec_cor_diff), digits=2)))", ylim=(0,1), legend=:outertop, legendfontsize=19)
 
-plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
+plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 15, labelfontsize = 18, margin=0.8Plots.cm)
+savefig("fig/figureS3/figS3k_sim_jmat_switching_highnoise.png")
 
-savefig("fig/sim_jmat/fig3ab_sim_jmat_switching_highnoise.png")
+plt_fig2cd = annotate!(plt1, -20, 0.027, text(L"(\textit{c})\hspace{10}"*"Food web 2 (κ = 0.1)", :left, 22), subplot=1)
+plt_fig2cd = annotate!(plt1, 105, 0.027, text(L"(\textit{d})", :left, 22), subplot=1)
 
-plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
-savefig("fig/sim_jmat/fig3cd_diff_jmat_switching_highnoise.png")
+plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 15, labelfontsize = 18, margin=0.8Plots.cm)
+savefig("fig/figureS3/figS3l_diff_jmat_switching_highnoise.png")
+
+plt_fig2ab = annotate!(plt2, -0.24, 0.46, text(L"(\textit{a})\hspace{10}"*"Food web 2 (κ = 0.1)", :left, 22), subplot=1)
+plt_fig2ab = annotate!(plt2, 0.34, 0.46, text(L"(\textit{b})", :left, 22), subplot=1)
+
+plt_fig2 = plot(plt_fig2ab, plt_fig2cd, layout=(2,1), size=(1500,1650), margin=0.8Plots.cm, top_margin=0.9Plots.cm, bottom_margin=1.0Plots.cm)
+savefig("fig/figure3")
 
 # ------------------------------------------------------------------------------------------------
 # Process and observational noise (high and modest)
@@ -203,10 +211,10 @@ box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="ρ (median: $(round(me
 
 plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5m_sim_jmat_switching_highnoise_obs.png")
+savefig("fig/figureS3/figS3m_sim_jmat_switching_highnoise_obs.png")
 
 plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
-savefig("fig/sim_jmat/S5n_diff_jmat_switching_highnoise_obs.png")
+savefig("fig/figureS3/figS3n_diff_jmat_switching_highnoise_obs.png")
 
 # ------------------------------------------------------------------------------------------------
 # Process and observational noise (Both high)
@@ -263,8 +271,8 @@ box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="Accuracy (median: $(ro
 
 plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5o_sim_jmat_switching_highnoise_highobs.png")
+savefig("fig/figureS3/figS3o_sim_jmat_switching_highnoise_highobs.png")
 
 plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5p_diff_jmat_switching_highnoise_highobs.png")
+savefig("fig/figureS3/figS3p_diff_jmat_switching_highnoise_highobs.png")

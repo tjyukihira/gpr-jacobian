@@ -67,8 +67,12 @@ p42 = plot_strengths(res_gpr, v_days[1:end-1]; row = 4, column = 2, title = "Pic
 p43 = plot_strengths(res_gpr, v_days[1:end-1]; row = 4, column = 3, title = "Pico ⬅ Nano", digits = 3) 
 
 # plot all of the results and save them
+#plot(p34, p43, layout = (1,2), title = [L"(\textit{a})" L"(\textit{b})"], size = (1400, 500), titlelocation=:left, legendfontsize=9, titlefontsize=11, tickfontsize=8, labelfontsize=10, legend=:outertop, margin = 1.5Plots.cm, top_margin = 2Plots.px)
+plot(p34, p43, layout = (1,2), size = (1500, 600), plot_title = L"(\textit{a}) \hspace{29} (\textit{b})", plot_titlelocation=(0.21,0.3), plot_titilevspan=0.22, plot_titlefontsize=21, legendfontsize=16, titlefontsize=21, tickfontsize=13, labelfontsize=15, legend=:outertop, margin = 1.8Plots.cm, top_margin = 25Plots.px)
+savefig("fig/fig4_compet.png")
+
 plot(p12, p13, p14, p21, p23, p24, p31, p32, p34, p41, p42, p43, layout = (4,3), size = (3000, 3000), legendfontsize=20, titlefontsize=27, tickfontsize=17, labelfontsize=19, legend=:outertop, margin = 2.5Plots.cm, top_margin = 8Plots.px)
-savefig("fig/Beninca2009_strengths.png")
+savefig("fig/figS4_strengths.png")
 
 # mean and sd of time series for scaling
 mu = mean(ts_lib, dims=1)[1,:]
@@ -78,17 +82,19 @@ sd = std(ts_lib, dims=1)[1,:]
 res_sim_jmat_inc_roti = sim_state_dependence(res_gpr, ts_lib, mu, sd; target_inc = 2)
 
 mean34_init = mean(res_gpr.jmat[3, 4, 1:end-1]); mean34_sim = mean(res_sim_jmat_inc_roti[3, 4, :])
-plt_j34_inc_roti = plot(v_days[1:end-1], res_gpr.jmat[3, 4, 1:end-1], label = "In-sample "*replace("(mean $(round(mean34_init, digits=3)))", "-" => L"-"), ylim=(-0.24, 0), xlabel = "Time (days)", ylabel = "Nano ⬅ Pico", title = "Nano ⬅ Pico (+20% Rotifers)", titlefontsize = 12, legendfontsize=10)
+plt_j34_inc_roti = plot(v_days[1:end-1], res_gpr.jmat[3, 4, 1:end-1], label = "In-sample "*replace("(mean $(round(mean34_init, digits=3)))", "-" => L"-"), ylim=(-0.24, 0), xlabel = "Time (days)", ylabel = "Nano ⬅ Pico", title = "Nano ⬅ Pico (+20% Rotifers)", titlefontsize = 14, legendfontsize=10)
 plt_j34_inc_roti = plot!(plt_j34_inc_roti, v_days[1:end-1],  res_sim_jmat_inc_roti[3,4,:], label = replace("+20% Rotifers (mean $(round(mean34_sim, digits=3)))", "-" => L"-"))
 plt_j34_inc_roti = annotate!(plt_j34_inc_roti, [500], [-0.2], text("ΔIS: $(round(-((mean34_sim-mean34_init)/mean34_init)*100, digits=1))%", 20))
+plt_j34_inc_roti = annotate!(plt_j34_inc_roti, [0], [0.019], text(L"(\textit{a})", 20))
 
 mean43_init = mean(res_gpr.jmat[4, 3, 1:end-1]); mean43_sim = mean(res_sim_jmat_inc_roti[4, 3, :])
-plt_j43_inc_roti = plot(v_days[1:end-1], res_gpr.jmat[4, 3, 1:end-1], label = "In-sample "*replace("(mean $(round(mean43_init, digits=3)))", "-" => L"-"), xlabel = "Time (days)", ylabel = "Pico ⬅ Nano", title = "Pico ⬅ Nano (+20% Rotifers)", titlefontsize = 12, legendfontsize=10)
+plt_j43_inc_roti = plot(v_days[1:end-1], res_gpr.jmat[4, 3, 1:end-1], label = "In-sample "*replace("(mean $(round(mean43_init, digits=3)))", "-" => L"-"), xlabel = "Time (days)", ylabel = "Pico ⬅ Nano", title = "Pico ⬅ Nano (+20% Rotifers)", titlefontsize = 14, legendfontsize=10)
 plt_j43_inc_roti = plot!(plt_j43_inc_roti, v_days[1:end-1], res_sim_jmat_inc_roti[4,3,:], label = replace("+20% Rotifers (mean $(round(mean43_sim, digits=3)))", "-" => L"-"))
 plt_j43_inc_roti = annotate!(plt_j43_inc_roti, [500], [-0.2], text("ΔIS: $(round(-((mean43_sim-mean43_init)/mean43_init)*100, digits=1))%", 20))
+plt_j43_inc_roti = annotate!(plt_j43_inc_roti, [0], [0.024], text(L"(\textit{b})", 20))
 
-plot(plt_j34_inc_roti, plt_j43_inc_roti, layout=(2,1), size=(1500, 1500), legendfontsize=18, titlefontsize=18, labelfontsize=13, tickfontsize=12, legend=:bottomright, linewidths=2, margin=0.5Plots.cm, bottom_margin = 1.2Plots.cm)
-savefig("fig/Beninca_2009_sim_compet.png")
+plot(plt_j34_inc_roti, plt_j43_inc_roti, layout=(2,1), size=(1500, 1500), legendfontsize=17, labelfontsize=13, tickfontsize=12, legend=:bottomright, linewidths=2, margin=1.5Plots.cm, top_margin = 0.65Plots.cm, bottom_margin = 1.3Plots.cm)
+savefig("fig/fig5_sim_compet.png")
 
 
 

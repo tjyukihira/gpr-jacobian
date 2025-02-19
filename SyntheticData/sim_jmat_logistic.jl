@@ -67,10 +67,10 @@ box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="ρ (median: $(round(me
 
 plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5q_sim_jmat_logistic_noise.png")
+savefig("fig/figureS3/figS3q_sim_jmat_logistic_noise.png")
 
 plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
-savefig("fig/sim_jmat/S5r_diff_jmat_logistic_noise.png")
+savefig("fig/figureS3/figS3r_diff_jmat_logistic_noise.png")
 
 # ------------------------------------------------------------------------------------------------
 # High level of process noise
@@ -126,10 +126,10 @@ box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="ρ (median: $(round(me
 
 plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5s_sim_jmat_logistic_highnoise.png")
+savefig("fig/figureS3/figS3s_sim_jmat_logistic_highnoise.png")
 
 plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
-savefig("fig/sim_jmat/S5t_diff_jmat_logistic_highnoise.png")
+savefig("fig/figureS3/figS3t_diff_jmat_logistic_highnoise.png")
 
 # ------------------------------------------------------------------------------------------------
 # Process and observational noise (high and modest)
@@ -186,10 +186,10 @@ box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="ρ (median: $(round(me
 
 plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5u_sim_jmat_logistic_highnoise_obs.png")
+savefig("fig/figureS3/figS3u_sim_jmat_logistic_highnoise_obs.png")
 
 plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
-savefig("fig/sim_jmat/S5v_diff_jmat_logistic_highnoise_obs.png")
+savefig("fig/figureS3/figS3v_diff_jmat_logistic_highnoise_obs.png")
 
 # ------------------------------------------------------------------------------------------------
 # High level of process and observational noise
@@ -246,7 +246,7 @@ box_cor_diff = boxplot(vec_cor_diff, xticks=false, label="ρ (median: $(round(me
 
 plt1 = plot(plt_diff, box_sign_diff_mean, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
 
-savefig("fig/sim_jmat/S5w_sim_jmat_logistic_highnoise_highobs.png")
+savefig("fig/figureS3/figS3w_sim_jmat_logistic_highnoise_highobs.png")
 
 plt2 = plot(sct_diff, box_cor_diff, layout=grid(1,2, widths=(7/10,3/10)), size=(1600, 900), tickfontsize = 16, labelfontsize = 19, margin=0.8Plots.cm)
-savefig("fig/sim_jmat/S5x_diff_jmat_logistic_highnoise_highobs.png")
+savefig("fig/figureS3/figS3x_diff_jmat_logistic_highnoise_highobs.png")

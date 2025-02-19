@@ -7,12 +7,12 @@ This data set includes R and Julia scripts used in the study.
 In ./SyntheticData, data and scripts for the analyses of synsthetic data are located.
 
 To create all synthetic time series for three artificial model systems, run "all_ts.jl" on Julia.
-```julia:all_ts.jl
+```julia
 include("all_ts.jl")
 ```
 
 To prepare all standardised time series data for model fitting procedures and theoretical Jacobian matrices for performance validation, run "all_generate_data_jmat.jl".
-```julia:all_ts.jl
+```julia
 include("all_generate_data_jmat.jl")
 ```
 
@@ -21,14 +21,14 @@ On R, running "all_fit.R " fits all models (GPR, S-map and regularised S-map) to
 source("all_fit.R")
 ```
 
-Running "all_inference_comparison.R" creates figures used in the articles to compare inference performances.
+Running "fig2_figS2.R" creates figures used in the articles to compare inference performances (figure 2 and S2).
 ```R
-source("all_inference_comparison.R")
+source("fig2_figS2.R")
 ```
 
-Running "all_sim_jmat.jl" on Julia creates figures for performance validation of scenario exploration for species interactions.
+Running "fig3_figS3.jl" on Julia creates figures for performance validation of scenario exploration for species interactions (figure 3 and S3).
 ```julia
-include("all_sim_jmat.jl")
+include("fig3_figS3.jl")
 ```
 
 #### All scripts used above
@@ -54,9 +54,9 @@ To fit GPR models, run "Beninca2009.jl".
 include("Beninca2009.jl")
 ```
 
-To create figures in the article (Figure 4, 5 and S4), run "Beninca2009_figs.jl".
+To create figure 4, 5 and S4, run "fig4_fig5_figS4.jl".
 ```julia
-include("Beninca2009_figs.jl")
+include("fig4_fig5_figS4.jl")
 ```
 
 ## Code/Software

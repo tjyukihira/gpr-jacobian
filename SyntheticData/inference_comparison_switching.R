@@ -2,7 +2,7 @@
 library(dplyr)
 library(magrittr)
 library(ggplot2)
-library(patchwork)
+#library(patchwork)
 
 # load functions to calculate summary statistics and plot the results
 source("functions/stats_jmat.R")
@@ -37,13 +37,13 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_switching)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_switching)
 
 # save boxplot
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-              crit = "rmse", ylim = c(0,1), fontsize = 22)
-ggsave("./fig/switching/fig2b_rmse_switching_noise.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_fig2b <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+              crit = "rmse", title = expression("("~italic(b)~")      Food web 2 ("~kappa~" = 0.05)"), ylim = c(0,1), fontsize = 11)
+#ggsave("./fig/figure2/fig2b_rmse_switching_noise.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-              crit = "rho", ylim = c(0,1), fontsize = 22)
-ggsave("./fig/switching/fig2h_rho_switching_noise.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_fig2h <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+              crit = "rho", title = expression("("~italic(h)~")      Food web 2 ("~kappa~" = 0.05)"), ylim = c(0,1), fontsize = 11)
+#ggsave("./fig/figure2/fig2h_rho_switching_noise.png", plot_rho, dpi = 300, width = 8, height = 4)
 
 
 ## -----------------------------------------------------------------------------
@@ -73,13 +73,13 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_switching)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_switching)
 
 # plot and save violin plots for RMSE and rho
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                           crit = "rmse", ylim=c(0,1), fontsize = 22)
-ggsave("./fig/switching/fig2e_rmse_switching_highnoise.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_fig2e <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                           crit = "rmse", title = expression("("~italic(e)~")      Food web 2 ("~kappa~" = 0.1)"), ylim=c(0,1), fontsize = 11)
+#ggsave("./fig/figure2/fig2e_rmse_switching_highnoise.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                          crit = "rho", ylim = c(0,1), fontsize = 22)
-ggsave("./fig/switching/fig2k_rho_switching_highnoise.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_fig2k <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                          crit = "rho", title = expression("("~italic(k)~")      Food web 2 ("~kappa~" = 0.1)"), ylim = c(0,1), fontsize = 11)
+#ggsave("./fig/figure2/fig2k_rho_switching_highnoise.png", plot_rho, dpi = 300, width = 8, height = 4)
 
 
 ## -----------------------------------------------------------------------------
@@ -109,13 +109,13 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_switching)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_switching)
 
 # plot and save violin plots for RMSE and rho
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                           crit = "rmse", ylim = c(0,1), fontsize = 22)
-ggsave("./fig/switching/S4b_rmse_switching_highnoise_obs.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_figS2b <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                           crit = "rmse", title = expression("("~italic(b)~")      Food web 2 ("~tau~" = 0.1)"), ylim = c(0,1), fontsize = 11)
+#ggsave("./fig/figureS2/figS2b_rmse_switching_highnoise_obs.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                          crit = "rho", ylim = c(0,1), fontsize = 22)
-ggsave("./fig/switching/S4h_rho_switching_highnoise_obs.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_figS2h <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                          crit = "rho", title = expression("("~italic(h)~")      Food web 2 ("~tau~" = 0.1)"), ylim = c(0,1), fontsize = 11)
+#ggsave("./fig/figureS2/figS2h_rho_switching_highnoise_obs.png", plot_rho, dpi = 300, width = 8, height = 4)
 
 
 ## -----------------------------------------------------------------------------
@@ -145,10 +145,10 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_switching)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_switching)
 
 # plot and save violin plots for RMSE and rho
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                           crit = "rmse", ylim = c(0,1), fontsize = 22)
-ggsave("./fig/switching/S4e_rmse_switching_highnoise_highobs.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_figS2e <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                           crit = "rmse", title = expression("("~italic(e)~")      Food web 2 ("~tau~" = 0.2)"), ylim = c(0,1), fontsize = 11)
+#ggsave("./fig/figureS2/figS2e_rmse_switching_highnoise_highobs.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                          crit = "rho", ylim = c(0,1), fontsize = 22)
-ggsave("./fig/switching/S4k_rho_switching_highnoise_highobs.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_figS2k <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                          crit = "rho", title = expression("("~italic(k)~")      Food web 2 ("~tau~" = 0.2)"), ylim = c(0,1), fontsize = 11)
+#ggsave("./fig/figureS2/figS2k_rho_switching_highnoise_highobs.png", plot_rho, dpi = 300, width = 8, height = 4)

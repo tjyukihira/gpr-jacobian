@@ -2,7 +2,7 @@
 library(dplyr)
 library(magrittr)
 library(ggplot2)
-library(patchwork)
+#library(patchwork)
 
 # load functions to calculate summary statistics and plot the results
 source("functions/stats_jmat.R")
@@ -37,13 +37,13 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_logistic_10)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_logistic_10)
 
 # plot and save violin plots for RMSE and rho
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-              crit = "rmse", fontsize = 22, ylim = c(0,1))
-ggsave("./fig/logistic_10/fig2c_rmse_logistic_10_noise.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_fig2c <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+              crit = "rmse", title = expression("("~italic(c)~")      Logistic map ("~kappa~" = 0.05)"), fontsize = 11, ylim = c(0,1))
+#ggsave("./fig/figure2/fig2c_rmse_logistic_10_noise.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-              crit = "rho", fontsize = 22, ylim=c(0, 1.0))
-ggsave("./fig/logistic_10/fig2i_rho_logistic_10_noise.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_fig2i <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+              crit = "rho", title = expression("("~italic(i)~")      Logistic map ("~kappa~" = 0.05)"), fontsize = 11, ylim=c(0, 1.0))
+#ggsave("./fig/figure2/fig2i_rho_logistic_10_noise.png", plot_rho, dpi = 300, width = 8, height = 4)
 
 
 ## -----------------------------------------------------------------------------
@@ -73,13 +73,13 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_logistic_10)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_logistic_10)
 
 # plot and save violin plots for RMSE and rho
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                           crit = "rmse", fontsize = 22, ylim=c(0,1))
-ggsave("./fig/logistic_10/fig2f_rmse_logistic_10_highnoise.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_fig2f <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                           crit = "rmse", title = expression("("~italic(f)~")      Logistic map ("~kappa~" = 0.1)"), fontsize = 11, ylim=c(0,1))
+#ggsave("./fig/figure2/fig2f_rmse_logistic_10_highnoise.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                          crit = "rho", fontsize = 22, ylim=c(0, 1.0))
-ggsave("./fig/logistic_10/fig2l_rho_logistic_10_highnoise.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_fig2l <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                          crit = "rho", title = expression("("~italic(l)~")      Logistic map ("~kappa~" = 0.1)"), fontsize = 11, ylim=c(0, 1.0))
+#ggsave("./fig/figure2/fig2l_rho_logistic_10_highnoise.png", plot_rho, dpi = 300, width = 8, height = 4)
 
 
 ## -----------------------------------------------------------------------------
@@ -109,13 +109,13 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_logistic_10)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_logistic_10)
 
 # plot and save violin plots for RMSE and rho
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                           crit = "rmse", fontsize = 22, ylim=c(0,1))
-ggsave("./fig/logistic_10/S4c_rmse_logistic_10_highnoise_obs.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_figS2c <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                           crit = "rmse", title = expression("("~italic(c)~")      Logistic map ("~tau~" = 0.05)"), fontsize = 11, ylim=c(0,1))
+#ggsave("./fig/figureS2/figS2c_rmse_logistic_10_highnoise_obs.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                          crit = "rho", fontsize = 22, ylim=c(0,1))
-ggsave("./fig/logistic_10/S4i_rho_logistic_10_highnoise_obs.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_figS2i <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                          crit = "rho", title = expression("("~italic(i)~")      Logistic map ("~tau~" = 0.05)"), fontsize = 11, ylim=c(0,1))
+#ggsave("./fig/figureS2/figS2i_rho_logistic_10_highnoise_obs.png", plot_rho, dpi = 300, width = 8, height = 4)
 
 
 ## -----------------------------------------------------------------------------
@@ -145,10 +145,10 @@ inference_jmat_rsmap <- get_stats(jmat_rsmap, list_jmat_scaled_logistic_10)
 inference_jmat_gpr <- get_stats(jmat_gpr, list_jmat_scaled_logistic_10)
 
 # plot and save violin plots for RMSE and rho
-plot_rmse <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                           crit = "rmse", fontsize = 22, ylim=c(0,1))
-ggsave("./fig/logistic_10/S4f_rmse_logistic_10_highnoise_highobs.png", plot_rmse, dpi = 300, width = 8, height = 4)
+plot_figS2f <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                           crit = "rmse", title = expression("("~italic(f)~")      Logistic map ("~tau~" = 0.1)"), fontsize = 11, ylim=c(0,1))
+#ggsave("./fig/figureS2/figS2f_rmse_logistic_10_highnoise_highobs.png", plot_rmse, dpi = 300, width = 8, height = 4)
 
-plot_rho <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
-                          crit = "rho", fontsize = 22, ylim=c(0,1))
-ggsave("./fig/logistic_10/S4l_rho_logistic_10_highnoise_highobs.png", plot_rho, dpi = 300, width = 8, height = 4)
+plot_figS2l <- stats_boxplot(inference_jmat_smap = inference_jmat_smap, inference_jmat_rsmap_best = inference_jmat_rsmap, inference_jmat_gpr = inference_jmat_gpr,
+                          crit = "rho", title = expression("("~italic(l)~")      Logistic map ("~tau~" = 0.1)"), fontsize = 11, ylim=c(0,1))
+#ggsave("./fig/figureS2/figS2l_rho_logistic_10_highnoise_highobs.png", plot_rho, dpi = 300, width = 8, height = 4)
