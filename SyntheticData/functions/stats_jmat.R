@@ -62,7 +62,7 @@ get_stats <- function(list_jmat_est, list_jmat_true, datasize=100){
 }
 
 # function for boxplot of summary statistics of the inference
-stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, inference_jmat_gpr, title="", ylim=c(0,1), crit="rmse", fontsize=16){
+stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, inference_jmat_gpr, title="", tag="(a)", ylim=c(0,1), crit="rmse", fontsize=16){
   nmodel = length(inference_jmat_smap$vec_rho)
   df <- data.frame(rho = NA, rmse = NA, model = NA)
   #df[1:(nmodel*3), 1] <- c(inference_jmat_smap$vec_bhat, inference_jmat_rsmap_best$vec_bhat, inference_jmat_gpr$vec_bhat)
@@ -81,7 +81,8 @@ stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, infere
     theme(axis.title.y = element_text(size = fontsize)) +
     ylab("RMSE") +
     xlab("") +
-    ggtitle(title)
+    ggtitle(title) + 
+    labs(tag = tag)
   
   plt_rho <- ggplot(df, aes(x = model, y = rho, colour = model)) + 
     geom_violin() +
@@ -94,7 +95,8 @@ stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, infere
     theme(axis.title.y = element_text(size = fontsize)) +
     ylab(expression(rho)) +
     xlab("") +
-    ggtitle(title)
+    ggtitle(title) + 
+    labs(tag = tag)
   
   if(crit=="rmse"){
     plt_rmse
