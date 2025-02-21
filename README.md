@@ -31,7 +31,7 @@ Running "fig3_figS3.jl" on Julia creates figures for performance validation of s
 include("fig3_figS3.jl")
 ```
 
-#### All scripts used above
+#### Each script used above
 Running "ts_fw5.jl" and "ts_switching.jl" creates synthetic time series for food web model 1 and 2 respectively.
 Running "ts_logistic.jl" creates synthetic time series for logistic map.
 
@@ -47,7 +47,7 @@ To create figures used to test the performance of GPR for scenario exploration (
 "load_data_*modelname*.jl" are used for loading inferred Jacobian matrices for each model systems on Julia.
 
 ### Empirical data
-In ./Beninca2009, data and scripts for the analyses of experimental mesocosm data are located.
+In ./Beninca2009, data and scripts for the analyses of experimental mesocosm data (Beninca et. al. 2009, *Ecology Letters*) are located.
 
 To fit GPR models, run "Beninca2009.jl".
 ```julia
@@ -60,7 +60,11 @@ include("fig4_fig5_figS4.jl")
 ```
 
 ## Code/Software
-Analyses for GPR were performed using Julia version 1.9.3 (Bezanson et. al. 2017) and DifferentialEquations.jl (version 7.10.0 for Solving Stochastic Differential Equations). In the model fitting of GPR, we used R package JuliaCall (version 0.17.5) to run Julia scripts on R version 4.1.3 (R Core Team 2022). Analyses for S-map and Regularised S-map were performed using R and the R packages macam (version 0.1.4, for the Regularised S-map and S-map), rEDM (version 1.14.3, for the S-map analysis), glmnet (version 4.1-7, for the regularised S-map analysis).
+Rprop algorithms for GPR were implmented using Julia version 1.9.3 (Bezanson et. al. 2017) and the packages StatsBase.jl (version 0.33.21), Distances.jl (0.10.8), DataFrames.jl (version 1.5.0) and JLD2.jl (version 0.4.31). We used DifferentialEquations.jl (version 7.10.0) and Distributions.jl (version 0.25.98) to create sysnthetic time series data. 
+
+In the model fitting of GPR, we used R package JuliaCall (version 0.17.5) to run Julia scripts on R version 4.1.3 (R Core Team 2022). Analyses for S-map and Regularised S-map were performed using R and the R packages macam (version 0.1.4), rEDM (version 1.14.3), glmnet (version 4.1-7), foreach (version 1.5.2), doParallel (version 1.0.17), and parallelly (version 1.36.0). 
+
+To create figures 3, 4, S3, and S4, we used Julia packages Plots.jl (version 1.38.16), StatsPlots.jl (version 0.15.6) and LaTeXStrings.jl (version 1.3.0). In addition, R packages dplyr (version 1.1.2), ggplot2 (version 3.4.2), magrittr (version 2.0.3), and patchwork (version 1.1.3) were used for figures 2 and S2. 
 
 For installation of macam, please see its [GitHub](https://github.com/ong8181/macam) page. You may be required to install packages from Bioconductor. If so, install them  using BiocManager package. For example,
 ```R
