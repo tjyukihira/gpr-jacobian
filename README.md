@@ -64,7 +64,7 @@ Rprop algorithms for GPR were implmented using Julia version 1.9.3 (Bezanson et.
 
 In the model fitting of GPR, we used R package JuliaCall (version 0.17.5) to run Julia scripts on R version 4.1.3 (R Core Team 2022). Analyses for S-map and Regularised S-map were performed using R and the R packages macam (version 0.1.4), rEDM (version 1.14.3), glmnet (version 4.1-7), foreach (version 1.5.2), doParallel (version 1.0.17), and parallelly (version 1.36.0). 
 
-To create figures 3, 4, S3, and S4, we used Julia packages Plots.jl (version 1.38.16), StatsPlots.jl (version 0.15.6) and LaTeXStrings.jl (version 1.3.0). In addition, R packages dplyr (version 1.1.2), ggplot2 (version 3.4.2), magrittr (version 2.0.3), and patchwork (version 1.1.3) were used for figures 2 and S2. 
+To create figures 3, 4, 5, S3, and S4, we used Julia packages Plots.jl (version 1.38.16), StatsPlots.jl (version 0.15.6) and LaTeXStrings.jl (version 1.3.0). In addition, R packages dplyr (version 1.1.2), ggplot2 (version 3.4.2), magrittr (version 2.0.3), and patchwork (version 1.1.3) were used for figures 2 and S2. 
 
 For installation of macam, please see its [GitHub](https://github.com/ong8181/macam) page. You may be required to install packages from Bioconductor. If so, install them  using BiocManager package. For example,
 ```R
