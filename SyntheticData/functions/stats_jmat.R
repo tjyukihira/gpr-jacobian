@@ -68,7 +68,7 @@ stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, infere
   #df[1:(nmodel*3), 1] <- c(inference_jmat_smap$vec_bhat, inference_jmat_rsmap_best$vec_bhat, inference_jmat_gpr$vec_bhat)
   df[1:(nmodel*3), 1] <- c(inference_jmat_smap$vec_rho, inference_jmat_rsmap_best$vec_rho, inference_jmat_gpr$vec_rho)
   df[1:(nmodel*3), 2] <- c(inference_jmat_smap$vec_rmse, inference_jmat_rsmap_best$vec_rmse, inference_jmat_gpr$vec_rmse)
-  df[1:(nmodel*3), 3] <- c(rep("S-map", nmodel), rep("Regularised S-map" , nmodel), rep("GPR", nmodel))
+  df[1:(nmodel*3), 3] <- c(rep("S-map", nmodel), rep("Regularised S-map" , nmodel), rep("GP-EDM", nmodel))
   
   plt_rmse <- ggplot(df, aes(x = model, y = rmse, colour = model)) + 
     geom_violin() +
@@ -79,6 +79,7 @@ stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, infere
     theme(legend.position = "none", text = element_text(size = fontsize)) +
     theme(plot.title = element_text(size = fontsize, hjust = 0)) +
     theme(axis.title.y = element_text(size = fontsize)) +
+    theme(axis.text.x = element_text(colour = c("red", "black", "black"))) +
     ylab("RMSE") +
     xlab("") +
     ggtitle(title) + 
@@ -93,6 +94,7 @@ stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, infere
     theme(legend.position = "none", text = element_text(size = fontsize)) +
     theme(plot.title = element_text(size = fontsize, hjust = 0)) +
     theme(axis.title.y = element_text(size = fontsize)) +
+    theme(axis.text.x = element_text(colour = c("red", "black", "black"))) +
     ylab(expression(rho)) +
     xlab("") +
     ggtitle(title) + 
