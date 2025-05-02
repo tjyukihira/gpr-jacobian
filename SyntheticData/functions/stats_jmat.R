@@ -79,7 +79,6 @@ stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, infere
     theme(legend.position = "none", text = element_text(size = fontsize)) +
     theme(plot.title = element_text(size = fontsize, hjust = 0)) +
     theme(axis.title.y = element_text(size = fontsize)) +
-    theme(axis.text.x = element_text(colour = c("red", "black", "black"))) +
     ylab("RMSE") +
     xlab("") +
     ggtitle(title) + 
@@ -94,7 +93,6 @@ stats_boxplot <- function(inference_jmat_smap, inference_jmat_rsmap_best, infere
     theme(legend.position = "none", text = element_text(size = fontsize)) +
     theme(plot.title = element_text(size = fontsize, hjust = 0)) +
     theme(axis.title.y = element_text(size = fontsize)) +
-    theme(axis.text.x = element_text(colour = c("red", "black", "black"))) +
     ylab(expression(rho)) +
     xlab("") +
     ggtitle(title) + 
